@@ -130,19 +130,10 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+<script src="assets/js/flags2.js"></script>
 
 <script>
-    // IMPORTANT: Map each task ID to its single correct flag.
-    const CORRECT_FLAGS = {
-        "uzd1": { flag: "SVS-b@0lt1s", name: "Uzdevums 1" },
-        "uzd2": { flag: "SVS-b!0n@r2", name: "Uzdevums 2" }, 
-        "uzd3": { flag: "SVS-#ae9061", name: "Uzdevums 3" },
-        "uzd4": { flag: "SVS-zk@r0g5", name: "Uzdevums 4" },
-        "uzd5": { flag: "SVS-sT3g0n4", name: "Uzdevums 5" },
-        "bonuss": { flag: "SVS-G17hVb!", name: "Bonuss uzdevums" }
-    };
-
-    /**
+        /**
      * Checks the submitted flag against the correct flag for the given task ID.
      * @param {string} taskId - The ID of the task (e.g., 'uzd1').
      */
@@ -152,13 +143,13 @@
         const messageElement = document.getElementById(`submission-message-${taskId}`);
         
         // Ensure the task ID is valid and has a corresponding flag
-        if (!CORRECT_FLAGS[taskId]) {
+        if (!C_F[taskId]) {
              messageElement.style.color = 'red';
              messageElement.innerHTML = 'Error: Task configuration missing.';
              return;
         }
         
-        const correctFlag = CORRECT_FLAGS[taskId].flag.toUpperCase();
+        const correctFlag = C_F[taskId].flag.toUpperCase();
         const submittedFlag = inputElement.value.toUpperCase().trim();
 
         if (!submittedFlag) {
@@ -169,7 +160,7 @@
 
         // Check if the submitted flag matches the correct flag for this specific task
         if (submittedFlag === correctFlag) {
-            const taskName = CORRECT_FLAGS[taskId].name;
+            const taskName = C_F[taskId].name;
             
             messageElement.style.color = 'green';
             messageElement.innerHTML = `🎉 **PAREIZI!** Jūs atradāt karogu priekš ${taskName}!`;
